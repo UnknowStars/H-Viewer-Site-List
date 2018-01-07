@@ -1,2 +1,2 @@
 # H-Viewer 个人站点更新
-  暂无
+  1. 增加了新站点"Minitokyo"
