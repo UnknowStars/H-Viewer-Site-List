@@ -1,0 +1,95 @@
+{
+    "title": "Minitokyo",
+    "indexUrl": "http://gallery.minitokyo.net/wallpapers?order\u003did&display\u003dthumbnails&page\u003d{page:1}",
+    "loginUrl": "http://my.minitokyo.net/login",
+    "galleryUrl": "http://gallery.minitokyo.net/view/{idCode:}",
+    "flag": "noRating|onePicGallery",
+    "categories": [
+        {
+            "cid": 1,
+            "title": "全画质",
+            "url": "http://gallery.minitokyo.net/wallpapers?order\u003did&display\u003dthumbnails&page\u003d{page:1}"
+        },
+        {
+            "cid": 2,
+            "title": "低画质",
+            "url": "http://gallery.minitokyo.net/wallpapers?order\u003did&display\u003dthumbnails&\u003d&elite\u003d1&page\u003d{page:1}"
+        },
+        {
+            "cid": 3,
+            "title": "高画质",
+            "url": "http://gallery.minitokyo.net/wallpapers?order\u003did&display\u003dthumbnails&\u003d&highlight\u003d1&page\u003d{page:1}"
+        }
+    ],
+    "galleryRule": {
+        "category": {
+            "fun": "text",
+            "selector": "div#menu \u003e dl \u003e dd:eq(5)"
+        },
+        "datetime": {
+            "fun": "attr",
+            "param": "title",
+            "selector": "div#menu \u003e dl \u003e dd:eq(3) \u003e span"
+        },
+        "uploader": {
+            "fun": "text",
+            "selector": "div#menu \u003e h2 \u003e a.moderator"
+        },
+        "description": {
+            "fun": "html",
+            "selector": "div#description"
+        },
+        "pictureRule": {
+            "item": {
+                "selector": "div#preview \u003e a \u003e img"
+            },
+            "thumbnail": {
+                "selector": "this",
+                "fun": "attr",
+                "param": "src"
+            },
+            "url": {
+                "selector": "this",
+                "fun": "attr",
+                "param": "src",
+                "regex": "http://static2.minitokyo.net/view/(\\d+)/(\\d+)/(\\d+).jpg",
+                "replacement": "http://static.minitokyo.net/downloads/$1/$2/$3.jpg"
+            }
+        },
+        "tagRule": {
+            "item": {
+                "selector": "div#tag-cloud \u003e a"
+            },
+            "title": {
+                "selector": "this",
+                "fun": "text"   
+            },
+            "url": {
+                "selector": "this",
+                "fun": "attr",
+                "param": "href"
+            } 
+        }
+        
+    },
+    "indexRule": {
+        "item": {
+            "selector": "ul.scans \u003e li"
+        },
+        "cover": {
+            "fun": "attr",
+            "param": "src",
+            "selector": "a \u003e img"
+        },
+        "idCode": {
+            "fun": "attr",
+            "param": "src",
+            "selector": "a \u003e img",
+            "regex": "http://static3.minitokyo.net/thumbs/\\d+/\\d+/(\\d+).jpg"
+        },
+        "title": {
+            "fun": "text",
+            "selector": "p \u003e a"
+        }
+    }
+}
