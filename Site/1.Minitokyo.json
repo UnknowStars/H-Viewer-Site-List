@@ -1,9 +1,9 @@
-{
+ {
     "title": "Minitokyo",
     "indexUrl": "http://gallery.minitokyo.net/wallpapers?order\u003did&display\u003dthumbnails&page\u003d{page:1}",
     "loginUrl": "http://my.minitokyo.net/login",
     "galleryUrl": "http://gallery.minitokyo.net/view/{idCode:}",
-    "flag": "noRating|onePicGallery",
+    "flag": "noRating|onePicGallery|preloadGallery",
     "categories": [
         {
             "cid": 1,
@@ -56,21 +56,44 @@
                 "replacement": "http://static.minitokyo.net/downloads/$1/$2/$3.jpg"
             }
         },
+        "commentRule": {
+            "item": {
+                "selector": "div#content \u003e ol#small-posts \u003e li"
+            },
+            "avatar": {
+                "fun": "text",
+                "selector": "span:eq(0) \u003e a",
+                "regex": "(.*)",
+                "replacement": "http://static1.minitokyo.net/avatars/$1.gif"
+            },
+            "author": {
+                "fun": "text",
+                "selector": "span:eq(0)"
+            },
+            "datetime": {
+                "fun": "attr",
+                "param": "title",
+                "selector": "span:eq(1)"
+            },
+            "content": {
+                "fun": "html",
+                "selector": "div.post-body"
+            }
+        },
         "tagRule": {
             "item": {
                 "selector": "div#tag-cloud \u003e a"
             },
             "title": {
                 "selector": "this",
-                "fun": "text"   
+                "fun": "text"
             },
             "url": {
                 "selector": "this",
                 "fun": "attr",
                 "param": "href"
-            } 
+            }
         }
-        
     },
     "indexRule": {
         "item": {
